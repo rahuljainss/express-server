@@ -1,15 +1,15 @@
-##**[FEATURES OF VS-CODE](https://eff.org)**
-###1. IntelliSense
+##<u><p align="center">FEATURES OF VS-CODE</p></u>
+###1.<U>IntelliSense</U>
 A very helpful syntax highlighter and autocomplete feature that provides smart completions based on variable types, function definitions, and imported modules.
-###2. Debugging
+###2. <U>Debugging</U>
 The built in debugger helps you accelerate editing, compiling, and debugging by adding breakpoints and watchers. By default it comes with support for NodeJS and can debug anything that is transpiled to JavaScript but other runtimes like C++ or Python will require an extension to be installed.
-##3. Version Control
+##3. <U>Version Control</U>
 There is a built in GUI for Git for the most common commands which makes it really easy to instantly see the changes you're making in your project.
-##4. Side-by-Side Editing
+##4. <U>Side-by-Side Editing</U>
 VS Code supports one of the most sought-after developer requests – editing code side by side. Simply Command (⌘) / Control click on a file from your project explorer and, voila, multiple files open up side by side, pre-docked and ready for edits. VS Code can support up to three simultaneous file edits, each of which can be launched from the command prompt as well.
-##5.Customization
+##5.<U>Customization</U>
 It is easy to configure Visual Studio Code to your liking through its various settings. Nearly every part of VS Code's editor, user interface, and functional behavior has options you can modify.
-##**[PLUGINS OF VS-CODE](https://eff.org)**
+##<u><p align="center">PLUGINS OF VS-CODE</p></u>
 ##1. Auto Close Tag
 * Automatically add closing tag when you type in the closing bracket of the opening tag
 * After closing tag is inserted, the cursor is between the opening and closing tag
