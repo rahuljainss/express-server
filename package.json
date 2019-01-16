@@ -1,0 +1,20 @@
+{
+  "name": "express-server",
+  "version": "1.0.0",
+  "description": "A app for learning purpose",
+  "main": "index.js",
+  "scripts": {
+    "pattern:diamond":"node extra/patterns/Diamond.js","pattern:equilateral":"node extra/patterns/Equilateral.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rahuljainss/express-server.git"
+  },
+  "author": "Rahul jain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rahuljainss/express-server/issues"
+  },
+  "homepage": "https://github.com/rahuljainss/express-server#readme"
+}
