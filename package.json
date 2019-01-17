@@ -4,7 +4,8 @@
   "description": "A app for learning purpose",
   "main": "index.js",
   "scripts": {
-    "pattern:diamond":"node extra/patterns/Diamond.js","pattern:equilateral":"node extra/patterns/Equilateral.js",
+    "pattern:diamond":"node extra/patterns/Diamond.js","pattern:equilateral":"node extra/patterns/Equilateral.js","utils:validation":"node extra/utils/validation.js",
+    "utils:permission":"node extra/utils/permissions.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
