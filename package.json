@@ -4,11 +4,7 @@
   "description": "A app for learning purpose",
   "main": "index.js",
   "scripts": {
-    "pattern:diamond": "node extra/patterns/Diamond.js",
-    "pattern:equilateral": "node extra/patterns/Equilateral.js",
-    "utils:validation": "node extra/utils/validation.js",
-    "utils:permission": "node extra/utils/permissions.js",
-    "dev": "babel-node extra/patterns/Equilateral.js --presets=env"
+    "dev": "babel-node extra --presets=env"
   },
   "repository": {
     "type": "git",
