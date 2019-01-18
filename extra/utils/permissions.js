@@ -1,3 +1,7 @@
+const headTrainer="head-trainer";
+const trainee="trainee";
+const trainer="trainer";
+const getUsers="getUsers";
 const permission = {
   getUsers: {
     all: ["head-trainer"],
