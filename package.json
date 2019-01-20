@@ -4,8 +4,11 @@
   "description": "A app for learning purpose",
   "main": "index.js",
   "scripts": {
-    "pattern:diamond":"node extra/patterns/Diamond.js","pattern:equilateral":"node extra/patterns/Equilateral.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pattern:diamond": "node extra/patterns/Diamond.js",
+    "pattern:equilateral": "node extra/patterns/Equilateral.js",
+    "utils:validation": "node extra/utils/validation.js",
+    "utils:permission": "node extra/utils/permissions.js",
+    "dev": "babel-node extra/patterns/Equilateral.js --presets=env"
   },
   "repository": {
     "type": "git",
@@ -16,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/rahuljainss/express-server/issues"
   },
-  "homepage": "https://github.com/rahuljainss/express-server#readme"
+  "homepage": "https://github.com/rahuljainss/express-server#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  }
 }
