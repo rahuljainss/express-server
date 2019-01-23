@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "babel-node extra --presets=env",
     "extraTs": "tsc-watch --project . --onSuccess \"npm run nodemon\"",
-    "nodemon": "nodemon ./dist/index.js"
+    "nodemon": "nodemon ./dist/index.js",
+    "start": "tsc-watch --project . --onSuccess \"npm run nodemon\"",
+    "prestart": "npm run clean",
+    "clean": "rm -r dist && mkdir dist"
   },
   "repository": {
     "type": "git",
@@ -23,5 +26,11 @@
     "babel-preset-env": "^1.7.0",
     "tsc-watch": "^1.0.31",
     "typescript": "^3.2.4"
+  },
+  "dependencies": {
+    "@types/dotenv": "^6.1.0",
+    "@types/node": "^10.12.18",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4"
   }
 }
