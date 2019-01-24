@@ -26,5 +26,5 @@ diamond(10);
 //calling validation.js
 validateUsers(users);
 //calling permissions.js
-hasPermission("getUsers", "head-trainer", "read");
-hasPermission("getUsers1", "trainer", "delete");
+hasPermission("GETUSERS", "head-trainer", "read");
+hasPermission("GETUSERS1", "trainer", "delete");
