@@ -1,16 +1,24 @@
 import { Request, Response, NextFunction } from "express";
 import SuccessHandler from "../../libs/routes/SuccessHandler";
 class TraineeController {
+  public static getInstance(instance: TraineeController) {
+    if (!instance) {
+      instance = new TraineeController();
+    }
+    return instance;
+  }
   get(req: Request, res: Response) {
     const data = [
       {
-        name: "trainee"
+        name: "trainee1"
       },
       {
         name: "trainee2"
       }
     ];
-    res.status(200).send({status:"Successfully fetched data",message:"message", data});
+    res
+      .status(200)
+      .send(SuccessHandler("ok", "Successfully fetched data", data));
     console.log("Inside get method");
   }
 
@@ -32,7 +40,7 @@ class TraineeController {
         data: { name, id }
       });
   }
-  put(req: Request, res: Response) {
+  update(req: Request, res: Response) {
     const { name, id } = req.body;
     if (!name) {
       res
@@ -51,11 +59,12 @@ class TraineeController {
       });
   }
   delete(req: Request, res: Response) {
+    const id=req.params.id;
     res.status(200).send({
       status: "ok",
-      message: "Successfully deleted",
+      message: `Successfully deleted - ${id}`,
       data: null
     });
   }
 }
-export default new TraineeController();
+export default TraineeController.getInstance(new TraineeController());
