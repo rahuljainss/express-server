@@ -42,11 +42,6 @@ class TraineeController {
   }
   update(req: Request, res: Response) {
     const { name, id } = req.body;
-    if (!name) {
-      res
-        .status(400)
-        .send({ status: "Bad request", message: "name is not present" });
-    }
     if (!id) {
       res
         .status(400)
