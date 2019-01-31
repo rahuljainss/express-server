@@ -38,8 +38,8 @@ class Server {
             throw err;
           }
           console.log(res);
-          Database.disconnect();
           console.log(`app is running on ${port}`);
+          Database.disconnect();
         });
       })
       .catch(res1 => {
