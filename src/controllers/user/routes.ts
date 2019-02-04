@@ -1,19 +1,18 @@
-import user from "./Controller";
-import * as express from "express";
-import validationHandler from "../../libs/routes/validationHandler";
-import { authMiddleWare } from "../../libs/routes";
+import * as express from 'express';
+import { authMiddleWare } from '../../libs/routes';
+import user from './Controller';
 const UserRouter: express.Router = express.Router();
-UserRouter.get("/", user.get)
+UserRouter.get('/', authMiddleWare('TRAINEEE', 'read'), user.get)
   .post(
-    "/",
-    user.create
+    '/',
+    user.create,
   )
   .put(
-    "/",
-    user.update
+    '/',
+    user.update,
   )
   .delete(
-    "/:_id",
-    user.delete
+    '/:_id',
+    user.delete,
   );
 export default UserRouter;

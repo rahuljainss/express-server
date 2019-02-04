@@ -1,69 +1,69 @@
 function validationHandler(config) {
-  return function(req, res, next) {
+  return (req, res, next) => {
     const keys = Object.keys(config);
 
-    keys.forEach(key => {
-      const item = config[key];
+    keys.forEach((key) => {
+      const items = config[key];
 
-      let values = item.in.map(item => {
+      let values = items.in.map((item) => {
         return req[item][key];
       });
 
-      if (item && item.required) {
-        const val1 = values.filter(item => item);
-        if (val1.length != values.length) {
+      if (items && items.required) {
+        const val1 = values.filter((item) => item);
+        if (val1.length !== values.length) {
           next({
-            status: "Bad Request",
-            message: item.errorMessage || `${key} is required`
+            message: items.errorMessage || `${key} is required`,
+            status: 'Bad Request',
           });
         }
       }
-      if (item && !item.required) {
-        const val1 = values.filter(item => item);
+      if (items && !items.required) {
+        const val1 = values.filter((item) => item);
         if (isNaN(values)) {
-          console.log("Not a number");
+          console.log('Not a number');
           next({
-            status: "Bad Request",
-            message: `${key} must be a number`
+            message: `${key} must be a number`,
+            status: 'Bad Request',
           });
         }
       }
-      if (values == "") {
-        values = item.default;
-        console.log(key, "=", values);
+      if (values === '') {
+        values = items.default;
+        console.log(key, '=', values);
       } else {
-        console.log(key, "=", values);
+        console.log(key, '=', values);
       }
-      if (item && item.string) {
-        const val1 = values.filter(item => item);
-        if (typeof val1[0] != "string") {
+      if (items && items.string) {
+        const val1 = values.filter((item) => item);
+        if (typeof val1[0] !== 'string') {
           next({
-            status: "Bad Request",
-            message: `${key} should be string` || "Error occured"
+            message: `${key} should be string` || 'Error occured',
+            status: 'Bad Request',
           });
         }
       }
-      if (item && item.regex) {
-        const val1 = values.filter(item => item);
-        const regex = item.regex;
+      if (items && items.regex) {
+        const val1 = values.filter((item) => item);
+        const regex = items.regex;
         if (!regex.test(val1[0])) {
           next({
-            status: "Bad Request",
-            message: `${key} should be valid` || "Error occured"
+            message: `${key} should be valid` || 'Error occured',
+            status: 'Bad Request',
           });
         }
       }
-      if (item && item.isObject) {
-        const val1 = values.filter(item => item);
-        if (typeof val1[0] != "object") {
+      if (items && items.isObject) {
+        const val1 = values.filter((item) => item);
+        if (typeof val1[0] !== 'object') {
           next({
-            status: "Bad Request",
-            message: `${key} should be an object` || "Error occured"
+            message: `${key} should be an object` || 'Error occured',
+            status: 'Bad Request',
           });
         }
       }
-      if (item && item.custom) {
-        item.custom(values);
+      if (items && items.custom) {
+        items.custom(values);
       }
     });
     next();

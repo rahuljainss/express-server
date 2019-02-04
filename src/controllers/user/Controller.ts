@@ -1,6 +1,6 @@
-import UserRepository from "../../repositories/user/UserRepository";
-import { Request, Response, NextFunction } from "express";
-import SuccessHandler from "../../libs/routes/SuccessHandler";
+import { Request, Response } from 'express';
+import SuccessHandler from '../../libs/routes/SuccessHandler';
+import UserRepository from '../../repositories/user/UserRepository';
 class UserController {
   public static getInstance(instance: UserController) {
     if (!instance) {
@@ -8,48 +8,47 @@ class UserController {
     }
     return instance;
   }
-  get(req: Request, res: Response) {
-    console.log("Inside get");
-    const id = req.query.id;
-    console.log(id);
+  public get(req: Request, res: Response) {
+    console.log('Inside get');
+    console.log(req.body);
     const user = new UserRepository();
     user
-      .getUser(id)
-      .then(data =>
+      .findone({_id: req.body.id})
+      .then((data) =>
         res
           .status(200)
-          .send(SuccessHandler("User Data", "Successfully Fetch User", data))
+          .send(SuccessHandler('User Data', 'Successfully Fetch User', data)),
       );
   }
 
-  create(req: Request, res: Response) {
+  public create(req: Request, res: Response) {
     const user = new UserRepository();
     user
       .create(req.body)
-      .then(data =>
+      .then((data) =>
         res
           .status(200)
-          .send(SuccessHandler("User Data", "Successfully created", data))
+          .send(SuccessHandler('User Data', 'Successfully created', data)),
       );
   }
-  update(req: Request, res: Response) {
+  public update(req: Request, res: Response) {
     const user = new UserRepository();
     const { olddata, newdata } = req.body;
-    user.update({ name: olddata }, { name: newdata }).then(data =>
+    user.update({ name: olddata }, { name: newdata }).then((data) =>
       res.status(200).send({
-        status: "ok",
-        message: "Successfully Updated"
-      })
+        message: 'Successfully Updated',
+        status: 'ok',
+      }),
     );
   }
-  delete(req: Request, res: Response) {
+  public delete(req: Request, res: Response) {
     const user = new UserRepository();
     user
       .delete(req.params)
-      .then(data =>
+      .then((data) =>
         res
           .status(200)
-          .send(SuccessHandler("User Data", "Successfully deleted", data))
+          .send(SuccessHandler('User Data', 'Successfully deleted', data)),
       );
   }
 }
