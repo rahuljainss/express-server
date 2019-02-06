@@ -15,9 +15,8 @@ export default (module, permissiontype) => (req, res, next) => {
       status: 403,
     });
   } else {
-    const { _id } = user;
     console.log(user);
-    repository.findone({ _id: user.id }).then((data) => {
+    repository.findone({ _id: user._id }).then((data) => {
       const role = data.role;
       console.log(role);
       if (!hasPermission(module, role, permissiontype)) {
