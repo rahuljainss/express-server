@@ -23,9 +23,9 @@ class UserController {
 
   public create(req: Request, res: Response) {
     const user = new UserRepository();
-    console.log(req.query);
+    console.log(req.body);
     user
-      .createUser(req.query)
+      .createUser(req.body)
       .then((data) =>
         res
           .status(200)
@@ -36,7 +36,9 @@ class UserController {
 public put(req: Request, res: Response) {
   console.log('Inside put method');
   const user = new UserRepository();
-  const { originalId, name } = req.query;
+  const { id, dataToUpdate } = req.body;
+  const originalId = id;
+  const name = dataToUpdate.name;
   user
   .updateUser({name, originalId})
   .then(() =>
@@ -70,6 +72,11 @@ public put(req: Request, res: Response) {
           .status(200)
           .send(SuccessHandler('User Data', 'Successfully deleted', data)),
       );
+  }
+  public createtoken(req: Request, res: Response, next) {
+    res
+          .status(200)
+          .send(SuccessHandler('OK', 'Successfully generated token' , req.body.token));
   }
 }
 export default UserController.getInstance(new UserController());

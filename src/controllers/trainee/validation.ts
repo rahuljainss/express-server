@@ -1,5 +1,12 @@
 const validation = {
   create: {
+    email: {
+      errorMessage: 'Id is required',
+      in: ['body'],
+      regex: /^([A-Za-z0-9_\-\.])+\@successive.tech/,
+      required: false,
+      string: true,
+    },
     id: {
       custom: (value) => {
         console.log('Value', value);
@@ -17,7 +24,7 @@ const validation = {
     },
   },
   delete: {
-    id: {
+    originalId: {
       errorMessage: 'Id is required',
       in: ['params'],
       required: true,
