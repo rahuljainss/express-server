@@ -25,7 +25,7 @@ class UserController {
     const user = new UserRepository();
     console.log(req.query);
     user
-      .create(req.query)
+      .createUser(req.query)
       .then((data) =>
         res
           .status(200)
@@ -38,7 +38,7 @@ public put(req: Request, res: Response) {
   const user = new UserRepository();
   const { originalId, name } = req.query;
   user
-  .update({name, originalId})
+  .updateUser({name, originalId})
   .then(() =>
   res
   .status(200)
@@ -64,7 +64,7 @@ public put(req: Request, res: Response) {
   public delete(req: Request, res: Response) {
     const user = new UserRepository();
     user
-      .delete(req.params)
+      .deleteUser(req.params)
       .then((data) =>
         res
           .status(200)

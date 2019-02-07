@@ -11,15 +11,15 @@ export default class UserRepository extends VersionableRepository<IUserModel, mo
     super(userModel);
   }
   public findone(query) {
-    return this.findUser(query);
+    return this.find(query);
   }
-  public create(data: any): Promise<IUserModel> {
-    return this.createUser(data);
+  public createUser(data: any): Promise<IUserModel> {
+    return this.create(data);
   }
-  public update(data) {
-    return this.updateUser(data);
+  public updateUser(data) {
+    return this.update(data);
   }
-public delete(data) {
-return this.deleteUser(data);
+public deleteUser(data) {
+return this.delete(data);
 }
 }
