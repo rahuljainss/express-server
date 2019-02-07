@@ -5,14 +5,15 @@ const UserRouter: express.Router = express.Router();
 UserRouter.get('/', authMiddleWare('TRAINEEE', 'read'), user.get)
   .post(
     '/',
+    // authMiddleWare('TRAINEEE', 'read'),
     user.create,
   )
   .put(
     '/',
-    user.update,
+    user.put,
   )
   .delete(
     '/:_id',
-    user.delete,
+  user.delete,
   );
 export default UserRouter;
