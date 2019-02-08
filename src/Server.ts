@@ -37,7 +37,6 @@ class Server {
           if (err) {
             throw err;
           }
-          console.log(res);
           console.log(`app is running on ${port}`);
           Database.disconnect();
         });

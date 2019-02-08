@@ -4,7 +4,6 @@ export default function seedData() {
   console.log('Seed function');
   const saltRounds = 10;
   const salt = bcrypt.genSaltSync(saltRounds);
-  console.log(process.env.password);
   const pass = bcrypt.hashSync(process.env.password, salt);
   const repository = new UserRepository();
   repository.count().then((count) => {

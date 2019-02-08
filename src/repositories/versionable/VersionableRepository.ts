@@ -9,14 +9,13 @@ export class VersionableRepository<D extends mongoose.Document, M extends mongoo
   }
   public async create(data) {
     const id = this.generateObjectId();
-    // console.log(data);
     return await this.model.create({ ...data, _id: id, originalId: id });
   }
   public delete(data) {
     console.log(data);
-    return this.find({ originalId: data.originalId, deletedAt: {$exists: false} }).lean().then((founddata) => {
+    return this.find({ originalId: data.originalId, deletedAt: { $exists: false } }).lean().then((founddata) => {
       console.log(founddata);
-      return this.model.updateOne({_id: founddata._id }, { $set: { deletedAt: Date.now() } });
+      return this.model.updateOne({ _id: founddata._id }, { $set: { deletedAt: Date.now() } });
     });
   }
   public count() {
@@ -24,18 +23,18 @@ export class VersionableRepository<D extends mongoose.Document, M extends mongoo
   }
   public update(data) {
     console.log(data);
-    return this.find({ originalId: data.originalId, deletedAt: {$exists: false}})
+    return this.find({ originalId: data.originalId, deletedAt: { $exists: false } })
       .lean().then((data1) => {
         this.create(Object.assign(data1, { name: data.name })).then((result) => {
           return this.model.updateOne({ _id: result._id },
             { originalId: data.originalId, createdAt: Date.now() }, (err) => {
               if (err) {
-            console.log('error');
+                console.log('error');
               }
               else {
                 console.log('Successfully updated');
               }
-          });
+            });
         });
         this.model.updateOne({ _id: data1._id },
           { $set: { deletedAt: Date.now() } }, { upsert: true }).then((err) => {
@@ -45,5 +44,12 @@ export class VersionableRepository<D extends mongoose.Document, M extends mongoo
   }
   public find(data) {
     return this.model.findOne(data);
+  }
+  public findbyskip(skip, limit) {
+    return this.model.find({}, undefined, { skip: Number(skip), limit: Number(limit) }, (err) => {
+      if (err) {
+        console.log('error');
+      }
+    });
   }
 }

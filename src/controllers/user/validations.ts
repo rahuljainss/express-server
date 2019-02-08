@@ -1,19 +1,16 @@
-const validation = {
+const validations = {
   create: {
-    id: {
-      custom: (value) => {
-        console.log('Value', value);
-        },
+    Emailid: {
       errorMessage: 'Id is required',
       in: ['body'],
+      regex: /^([A-Za-z0-9_\-\.])+\@successive.tech/,
       required: true,
-      string: true,
     },
-    name: {
-      errorMessage: 'Name is required',
+    Password: {
+      errorMessage: 'Password is required',
       in: ['body'],
-      regex: /^[a-zA-Z ]{2,30}$/,
       required: true,
+
     },
   },
   delete: {
@@ -55,4 +52,4 @@ const validation = {
     },
   },
 };
-export default validation;
+export default validations;

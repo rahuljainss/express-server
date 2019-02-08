@@ -30,9 +30,9 @@ function validationHandler(config) {
       }
       if (values === '') {
         values = items.default;
-        console.log(key, '=', values);
+        // console.log(key, '=', values);
       } else {
-        console.log(key, '=', values);
+        // console.log(key, '=', values);
       }
       if (items && items.string) {
         const val1 = values.filter((item) => item);

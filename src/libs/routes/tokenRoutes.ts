@@ -7,8 +7,8 @@ import { userModel } from './../../repositories/user/UserModel';
 const userRepo = new UserRepository();
 export default function tokenRoutes() {
   return (req, res , next) => {
-    const { emailid, pass } = req.query;
-    userRepo.findone({email: emailid }).then((result: IUserModel) => {
+    const { Emailid, Password } = req.body;
+    userRepo.find({email: Emailid }).then((result: IUserModel) => {
       console.log(result);
       if (!result) {
         next({
@@ -18,9 +18,8 @@ export default function tokenRoutes() {
         });
       }
       const { password } = result;
-      if (bcrypt.compareSync(pass, password)) {
+      if (bcrypt.compareSync(Password, password)) {
         const token = jwt.sign({ result, exp: Math.floor(Date.now() / 1000) + 900 }, process.env.Key);
-        console.log(token);
         req.body.token = token;
         next();
       }
