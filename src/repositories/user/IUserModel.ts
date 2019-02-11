@@ -5,9 +5,5 @@ export interface IUserModel extends IVersionableModel {
   _id: string;
   role: string;
   email: string;
-}
-
-export interface IUserDeleteModel {
-  n?: number;
-  ok?: number;
+  password: string;
 }

@@ -16,14 +16,13 @@ export default (module, permissiontype) => (req, res, next) => {
     });
   } else {
     console.log(user);
-    repository.findone({ _id: user._id }).then((data) => {
+    repository.find({ _id: user._id }).then((data) => {
       const role = data.role;
       console.log(role);
       if (!hasPermission(module, role, permissiontype)) {
         next({ message: 'Unauthorized Access', status: 403 });
       } else {
         console.log('Permission is allowed');
-        req.body.id = data._id;
         next();
       }
     });
